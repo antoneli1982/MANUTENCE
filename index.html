@@ -439,8 +439,8 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   <!-- Main content -->
   <div class="op-main">
     <div class="op-header">
-      <h2>🏭 Painel Operacional</h2>
-      <p>Aponte máquinas paradas e registre o retorno à operação</p>
+      <h2>📦 Painel de Pedidos</h2>
+      <p>Aponte pedidos parados e registre o retorno à operação</p>
     </div>
 
     <!-- Summary strip -->
@@ -448,7 +448,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
 
     <!-- Machine grid -->
     <div class="op-grid" id="op-grid">
-      <div style="color:var(--muted);text-align:center;padding:40px;grid-column:1/-1;">⏳ Carregando máquinas...</div>
+      <div style="color:var(--muted);text-align:center;padding:40px;grid-column:1/-1;">⏳ Carregando pedidos...</div>
     </div>
   </div>
 </div>
@@ -513,7 +513,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
     <span>MaintPRO</span>
   </div>
   <nav class="snav">
-    <div class="ni on" onclick="pg('maquinas',this)"><span>🏭</span><span>Máquinas</span></div>
+    <div class="ni on" onclick="pg('maquinas',this)"><span>📦</span><span>Pedidos</span></div>
     <div class="ni" onclick="pg('historico',this)"><span>📋</span><span>Histórico</span></div>
     <div class="ni" id="ni-aprovacoes" onclick="openAprovacoes(this)"><span>🔐</span><span>Autorizações</span></div>
 
@@ -534,8 +534,8 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   <!-- ── MÁQUINAS ── -->
   <div class="pg on" id="pg-maquinas">
     <div class="ph">
-      <div><h2>🏭 Máquinas</h2><p>Status em tempo real de todos os equipamentos</p></div>
-      <button class="btn btn-p" onclick="checkMaqSenha('')">+ Nova Máquina</button>
+      <div><h2>📦 Pedidos</h2><p>Status em tempo real de todos os pedidos</p></div>
+      <button class="btn btn-p" onclick="checkMaqSenha('')">+ Novo Pedido</button>
     </div>
     <div class="strip" id="strip"></div>
     <div class="maq-grid" id="maq-grid"></div>
@@ -547,7 +547,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
       <div><h2>📋 Histórico de Manutenção</h2><p>Todos os registros</p></div>
       <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
         <select id="hist-filter" onchange="renderHist()" style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-size:13px;outline:none;">
-          <option value="">Todas as máquinas</option>
+          <option value="">Todos os pedidos</option>
         </select>
         <select id="hist-tipo" onchange="renderHist()" style="background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-size:13px;outline:none;">
           <option value="">Todos os tipos</option>
@@ -560,7 +560,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
     <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;">
       <div style="overflow-x:auto;"><table class="htable" id="hist-table">
         <thead><tr>
-          <th>Início</th><th>Fim</th><th>Máquina</th><th>Tipo</th><th>Descrição</th>
+          <th>Início</th><th>Fim</th><th>Pedido</th><th>Tipo</th><th>Descrição</th>
           <th>Causa</th><th>Ação</th><th>Peças</th><th>Técnico</th><th>Dur.</th><th style="text-align:center">Ações</th>
         </tr></thead>
         <tbody id="hist-body"></tbody>
@@ -753,7 +753,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
     <div class="fr"><label>Técnico Responsável</label><input id="prev-tec" placeholder="Nome do técnico"></div>
     <div class="fr"><label>Próxima PM Prevista</label><input type="date" id="prev-prox"></div>
   </div>
-  <div class="fr"><label>Status da Máquina após PM</label>
+  <div class="fr"><label>Status do Pedido após PM</label>
     <select id="prev-status">
       <option value="ok">✅ Operando Normal</option>
       <option value="aten">⚠️ Operando com Restrição</option>
@@ -769,7 +769,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
 <!-- ═══════ MODAL EDITAR MÁQUINA ═══════ -->
 <div class="ov" id="ov-edit-maq">
 <div class="modal" style="width:480px;">
-  <h3>⚙️ Editar Máquina <button class="mc" onclick="cm('ov-edit-maq')">✕</button></h3>
+  <h3>⚙️ Editar Pedido <button class="mc" onclick="cm('ov-edit-maq')">✕</button></h3>
   <div id="em-draft-bar" style="display:none;background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.3);border-radius:8px;padding:8px 14px;margin-bottom:12px;font-size:12px;color:#facc15;display:flex;align-items:center;justify-content:space-between;">
     <span>💾 Você tem alterações não salvas</span>
     <button onclick="discardMaqDraft()" style="background:none;border:none;color:#f87171;cursor:pointer;font-size:12px;">🗑️ Descartar</button>
@@ -777,9 +777,9 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   <input type="hidden" id="em-id">
   <input type="hidden" id="em-img">
 
-  <!-- Imagem da máquina -->
+  <!-- Imagem do pedido -->
   <div class="fr">
-    <label>📷 Foto da Máquina <span style="color:var(--muted);font-weight:400;font-size:11px;">(opcional)</span></label>
+    <label>📷 Foto do Pedido <span style="color:var(--muted);font-weight:400;font-size:11px;">(opcional)</span></label>
     <div style="display:flex;align-items:center;gap:12px;">
       <div id="em-img-preview" style="width:72px;height:72px;border-radius:10px;background:var(--card2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;overflow:hidden;">🏭</div>
       <div style="flex:1;">
@@ -792,7 +792,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   </div>
 
   <div class="frow2">
-    <div class="fr"><label>Nome da Máquina</label><input id="em-nome" placeholder="Ex: GLORY MAQ 52T"></div>
+    <div class="fr"><label>Nome do Pedido</label><input id="em-nome" placeholder="Ex: Pedido #001"></div>
     <div class="fr"><label>Tipo</label><input id="em-tipo" placeholder="Ex: Centro de Usinagem"></div>
   </div>
   <div class="frow2">
@@ -829,7 +829,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
     📝 Use este formulário para registrar manutenções que já ocorreram. As informações serão salvas no histórico, <b>sem envio de e-mail</b>.
   </div>
 
-  <div class="fr"><label>Máquina</label><input id="retro-maq-name" readonly style="opacity:.7;cursor:default;"></div>
+  <div class="fr"><label>Pedido</label><input id="retro-maq-name" readonly style="opacity:.7;cursor:default;"></div>
 
   <div class="fr"><label>Tipo de Manutenção</label>
     <select id="retro-tipo">
@@ -896,7 +896,7 @@ body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);mi
   </div>
   <div class="frow2">
     <div class="fr">
-      <label>🏭 Máquina</label>
+      <label>📦 Pedido</label>
       <select id="eh-maqId"></select>
     </div>
     <div class="fr">
@@ -1377,7 +1377,7 @@ function _launchOpPanel(u){
     av.style.background='var(--gold)';
   }
   document.getElementById('op-uname').textContent=u.nome;
-  showLoading('Carregando máquinas...');
+  showLoading('Carregando pedidos...');
   gMaqs().then(()=>{
     gHist().then(()=>{
       hideLoading();
@@ -1637,7 +1637,7 @@ async function renderOpMaqs(){
   const maqs=await gMaqs();
   const hist=await gHist();
   const grid=document.getElementById('op-grid');
-  if(!maqs.length){grid.innerHTML='<div style="color:var(--muted);text-align:center;padding:40px;grid-column:1/-1;">Nenhuma máquina cadastrada.</div>';return;}
+  if(!maqs.length){grid.innerHTML='<div style="color:var(--muted);text-align:center;padding:40px;grid-column:1/-1;">Nenhum pedido cadastrado.</div>';return;}
   grid.innerHTML=maqs.map(m=>{
     const isStopped=m.status==='corr';
     // Find open corrective record to show elapsed time
@@ -1679,7 +1679,7 @@ async function openOpParada(maqId){
   document.getElementById('op-parada-tec').value='';
   document.getElementById('op-parada-err').style.display='none';
   document.getElementById('op-parada-info').innerHTML=`
-    <div class="op-modal-info-row"><span class="lbl">🏭 Máquina</span><span class="val">${m.nome}</span></div>
+    <div class="op-modal-info-row"><span class="lbl">📦 Pedido</span><span class="val">${m.nome}</span></div>
     <div class="op-modal-info-row"><span class="lbl">🔧 Tipo</span><span class="val">${m.tipo}</span></div>
     <div class="op-modal-info-row"><span class="lbl">📅 Última PM</span><span class="val">${fmtDate(m.lastPM)}</span></div>`;
   om('ov-op-parada');
@@ -1733,7 +1733,7 @@ async function openOpRetorno(maqId){
   document.getElementById('op-retorno-err').style.display='none';
   const hrs=openRec&&openRec.dtIni?Math.round((Date.now()-new Date(openRec.dtIni))/3600000*10)/10:null;
   document.getElementById('op-retorno-info').innerHTML=`
-    <div class="op-modal-info-row"><span class="lbl">🏭 Máquina</span><span class="val">${m.nome}</span></div>
+    <div class="op-modal-info-row"><span class="lbl">📦 Pedido</span><span class="val">${m.nome}</span></div>
     ${openRec&&openRec.dtIni?`<div class="op-modal-info-row"><span class="lbl">🕐 Parada desde</span><span class="val">${fmtDateTime(openRec.dtIni)}</span></div>`:''}
     ${hrs!==null?`<div class="op-modal-info-row"><span class="lbl">⏱ Tempo parada</span><span class="val" style="color:var(--orange);">${hrs}h</span></div>`:''}
     ${openRec&&openRec.desc?`<div class="op-modal-info-row"><span class="lbl">⚠️ Problema</span><span class="val" style="max-width:230px;text-align:right;font-size:12px;">${openRec.desc}</span></div>`:''}`;
@@ -2141,7 +2141,7 @@ async function testEmail(){
     m.textContent='⚠️ Cadastre ao menos um destinatário antes de enviar o teste.';
     return;
   }
-  const testParams={subject:'[MaintPRO] Teste de conexão',maquina:'MÁQUINA TESTE — CNC 001',record_id:'TEST_001',dt_inicio:fmtDateTime(new Date().toISOString()),dt_fim:'—',problema:'E-mail de teste do sistema MaintPRO.',causa:'Teste de configuração',acao:'Verificação do sistema de notificações',pecas:'—',tecnico:'Sistema MaintPRO',status:'✅ Teste OK',fase:'TESTE DE CONFIGURAÇÃO'};
+  const testParams={subject:'[MaintPRO] Teste de conexão',maquina:'PEDIDO TESTE — #001',record_id:'TEST_001',dt_inicio:fmtDateTime(new Date().toISOString()),dt_fim:'—',problema:'E-mail de teste do sistema MaintPRO.',causa:'Teste de configuração',acao:'Verificação do sistema de notificações',pecas:'—',tecnico:'Sistema MaintPRO',status:'✅ Teste OK',fase:'TESTE DE CONFIGURAÇÃO'};
   // Envia para todos os dests diretamente para melhor controle de erro
   const htmlBody = buildEmailHtml(testParams);
   let enviados = 0;
@@ -2216,7 +2216,7 @@ function buildEmailHtml(params){
   <div style="padding:28px;">
     <table style="width:100%;border-collapse:collapse;font-size:14px;color:#1e293b;">
       <tr style="background:#f8fafc;">
-        <td style="padding:12px 16px;color:#64748b;font-weight:600;width:40%;border-radius:6px 0 0 0;">🏭 Máquina</td>
+        <td style="padding:12px 16px;color:#64748b;font-weight:600;width:40%;border-radius:6px 0 0 0;">📦 Pedido</td>
         <td style="padding:12px 16px;font-weight:700;">${params.maquina||'—'}</td>
       </tr>
       <tr>
@@ -2322,7 +2322,7 @@ async function testEmail(){
     m.textContent='⚠️ Cadastre ao menos um destinatário antes de testar.';
     return;
   }
-  const testParams={subject:'[MaintPRO] Teste de conexão',maquina:'MÁQUINA TESTE — CNC 001',record_id:'TEST_001',dt_inicio:fmtDateTime(new Date().toISOString()),dt_fim:'—',problema:'E-mail de teste do sistema MaintPRO.',causa:'Teste de configuração',acao:'Verificação do sistema de notificações',pecas:'—',tecnico:'Sistema MaintPRO',status:'✅ Teste OK',fase:'TESTE DE CONFIGURAÇÃO'};
+  const testParams={subject:'[MaintPRO] Teste de conexão',maquina:'PEDIDO TESTE — #001',record_id:'TEST_001',dt_inicio:fmtDateTime(new Date().toISOString()),dt_fim:'—',problema:'E-mail de teste do sistema MaintPRO.',causa:'Teste de configuração',acao:'Verificação do sistema de notificações',pecas:'—',tecnico:'Sistema MaintPRO',status:'✅ Teste OK',fase:'TESTE DE CONFIGURAÇÃO'};
   const ok=await sendEmailNotif(testParams,['inicio','fim']);
   if(ok){
     m.style.background='rgba(34,197,94,.12)';m.style.border='1px solid rgba(34,197,94,.3)';m.style.color='#4ade80';
@@ -2369,7 +2369,7 @@ function showNotifResult(ok, fase, maqNome, dests, horas, isRetro=false){
       <div style="text-align:center;margin-bottom:16px;">
         <div style="font-size:48px;line-height:1;margin-bottom:10px;">${icon}</div>
         <div style="font-size:20px;font-weight:800;color:${cor};">${title}</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:4px;">Máquina: <b style="color:var(--text)">${maqNome}</b></div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px;">Pedido: <b style="color:var(--text)">${maqNome}</b></div>
         ${horasBlock}
       </div>
       ${emailBlock}
@@ -2500,7 +2500,7 @@ async function clearCorrDraft(maqId){
 async function openFinalizeCorr(maqId){
   const hist=await gHist();
   const rec=hist.find(h=>h.maqId===maqId&&h.tipo==='Corretiva'&&!h.finalizado);
-  if(!rec){alert('Nenhuma manutenção em andamento encontrada para esta máquina.');return;}
+  if(!rec){alert('Nenhuma manutenção em andamento encontrada para este pedido.');return;}
   const maqs=await gMaqs();
   const m=maqs.find(x=>x.id===maqId);
   document.getElementById('corr-maq-id').value=maqId;
@@ -2594,7 +2594,7 @@ function checkMaqSenha(maqId){
   ov.innerHTML=`
     <div class="modal" style="width:360px;text-align:center;">
       <h3 style="justify-content:center;">🔒 Área Restrita <button class="mc" style="position:absolute;right:28px;" onclick="document.getElementById('ov-maq-senha').remove()">✕</button></h3>
-      <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Digite a senha para ${label} máquinas</p>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:20px;">Digite a senha para ${label} pedidos</p>
       <div class="pw" style="margin:0 auto 16px;max-width:220px;">
         <input type="password" id="maq-senha-input" placeholder="Senha"
           style="background:#0a0a0a;border:1px solid var(--border);border-radius:9px;padding:12px 44px 12px 16px;color:var(--text);font-size:15px;outline:none;width:100%;"
@@ -2757,8 +2757,8 @@ async function saveEditMaq(){
   const lastPM=document.getElementById('em-lastpm').value;
   const nextPM=document.getElementById('em-nextpm').value;
   const lastCorr=document.getElementById('em-lastcorr').value;
-  if(!nome){alert('Informe o nome da máquina.');return;}
-  showLoading('Salvando máquina...');
+  if(!nome){alert('Informe o nome do pedido.');return;}
+  showLoading('Salvando pedido...');
   const maqs=await gMaqs();
   const img=document.getElementById('em-img').value;
   if(!id){
@@ -2789,7 +2789,7 @@ async function deleteMaq(){
   const maqs=await gMaqs();
   const m=maqs.find(x=>x.id===id);
   if(!confirm(`Excluir a máquina "${m?.nome}"? Esta ação não pode ser desfeita.`))return;
-  showLoading('Excluindo máquina...');
+  showLoading('Excluindo pedido...');
   const novas=maqs.filter(x=>x.id!==id);
   await sMaqs(novas);
   // Remove history of this machine
@@ -2979,7 +2979,7 @@ async function openHistMaq(id){
 async function populateFilters(){
   const maqs=await gMaqs();
   const sel=document.getElementById('hist-filter');
-  sel.innerHTML='<option value="">Todas as máquinas</option>'+
+  sel.innerHTML='<option value="">Todos os pedidos</option>'+
     maqs.map(m=>`<option value="${m.id}">${m.nome}</option>`).join('');
 }
 
@@ -3159,7 +3159,7 @@ async function exportHistExcel(){
       ['Corretivas',totalCorr],
       ['Preventivas',totalPrev],
       ['Horas Totais de Manutenção',totalH],
-      ['Máquina com Mais Corretivas',maqMaisCorr?`${maqMaisCorr[0]} (${maqMaisCorr[1]})`:'—'],
+      ['Pedido com Mais Corretivas',maqMaisCorr?`${maqMaisCorr[0]} (${maqMaisCorr[1]})`:'—'],
     ];
     const wsRes=XLSX.utils.aoa_to_sheet(resumo);
     wsRes['!cols']=[{wch:36},{wch:28}];
@@ -3175,7 +3175,7 @@ async function exportHistExcel(){
 // ─── EXPORTAR EXCEL DA MÁQUINA ───
 async function exportHistMaqExcel(){
   const id=window._histMaqId;
-  if(!id){alert('Nenhuma máquina selecionada.');return;}
+  if(!id){alert('Nenhum pedido selecionado.');return;}
   showLoading('Gerando Excel...');
   try{
     const [allHist, maqs] = await Promise.all([gHist(), gMaqs()]);
